@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Card</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Create a New Card</h2>
+
+        <form method="POST" action="/cards/create">
+            <input type="hidden" name="deck_id" value="{{ deck_id }}">
+
+            <div class="form-group">
+                <label for="word">Word</label>
+                <input type="text" id="word" name="word" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="translation">Translation</label>
+                <input type="text" id="translation" name="translation" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tip">Tip (optional)</label>
+                <input type="text" id="tip" name="tip" class="form-control">
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-success btn-lg">Create Card</button>
+            </div>
+        </form>
+        <a href="/cards" class="btn btn-secondary mb-3">All Cards</a>
+    </div>
+</body>
+</html>

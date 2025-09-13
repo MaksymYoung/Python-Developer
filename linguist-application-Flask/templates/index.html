@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users Table</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS (including jQuery and Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        table {
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+            word-wrap: break-word;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .actions-column {
+            text-align: center;
+            width: 320px; /* Increase width to accommodate 4 buttons */
+        }
+        .create-deck-column {
+            text-align: center;
+        }
+        .actions-column .d-flex {
+            gap: 8px; /* Distance between buttons */
+            justify-content: space-between; /* Spread out the buttons evenly */
+            flex-wrap: nowrap; /* Prevent buttons from wrapping to the next line */
+        }
+        .actions-column .btn {
+            width: 80px; /* Fixed width for buttons */
+            white-space: normal; /* Allow text wrapping in buttons */
+            min-height: 45px; /* Set a minimum height for buttons */
+            font-size: 12px; /* Smaller font size for buttons */
+        }
+    </style>
+
+</head>
+
+<body>
+<h2 class="text-center">Users</h2>
+
+<!-- Create User Button -->
+<a href="/users/create" class="btn btn-success mb-3 d-block mx-auto" style="width: 200px;">Create User</a>
+
+<!-- All Decks Button -->
+<a href="/decks" class="btn btn-secondary mb-3 d-block mx-auto" style="width: 200px;">All Decks</a>
+
+<!-- All Cards Button -->
+<a href="/cards" class="btn btn-info mb-3 d-block mx-auto" style="width: 200px;">All Cards</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>User ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th class="actions-column">Actions</th>
+        <th>Create Deck</th>
+        <th>Decks</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users_list %}
+    <tr id="user-row-{{ user.id }}">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td class="actions-column">
+            <div class="d-flex">
+                <!-- View Button -->
+                <form action="/users/{{ user.id }}" method="GET">
+                    <button type="submit" class="btn btn-info btn-sm">View</button>
+                </form>
+
+                <!-- Update Name Button -->
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                        data-target="#updateNameModal-{{ user.id }}">
+                    Update<br>Name
+                </button>
+
+                <!-- Change Password Button -->
+                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                        data-target="#passwordModal" data-user-id="{{ user.id }}">
+                    Change<br>Password
+                </button>
+
+                <!-- Delete Button -->
+                <form action="/users/{{ user.id }}" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Are you sure you want to delete this user?')">Delete
+                    </button>
+                </form>
+            </div>
+        </td>
+
+        <!-- Create Deck Button -->
+        <td class="create-deck-column">
+            <a href="/decks/create?user_id={{ user.id }}" class="btn btn-success btn-sm">Create Deck</a>
+        </td>
+
+        <!-- Decks Button -->
+        <td class="create-deck-column">
+            <a href="/decks/user/{{ user.id }}" class="btn btn-primary btn-sm">Decks</a> <!-- Link to user's decks -->
+        </td>
+    </tr>
+
+    <!-- Modal for Updating Name -->
+    <div class="modal fade" id="updateNameModal-{{ user.id }}" tabindex="-1" role="dialog"
+         aria-labelledby="updateNameModalLabel-{{ user.id }}" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateNameModalLabel-{{ user.id }}">Update Name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateNameForm-{{ user.id }}">
+                        <div class="form-group">
+                            <label for="newName-{{ user.id }}">New Name:</label>
+                            <input type="text" class="form-control" id="newName-{{ user.id }}"
+                                   placeholder="Enter new name">
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="updateUserName({{ user.id }})">Save
+                        </button>
+                    </form>
+                    <div id="error-message-{{ user.id }}" class="text-danger mt-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Changing Password -->
+    <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="passwordModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="passwordModalLabel">Change Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="passwordForm">
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" class="form-control" id="currentPassword" name="current_password"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" class="form-control" id="newPassword" name="new_password" required
+                                   minlength="6">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    function updateUserName(userId) {
+        const newName = document.getElementById('newName-' + userId).value;
+
+        // Send AJAX request to update name
+        fetch(`/users/${userId}/name`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name: newName }),
+        })
+        .then(response => response.text())
+        .then(data => {
+            if (data) {
+                // Update table row with new name
+                const userRow = document.getElementById('user-row-' + userId);
+                userRow.innerHTML = data;
+
+                // Close the modal
+                $('#updateNameModal-' + userId).modal('hide');
+            }
+        })
+        .catch(error => {
+            document.getElementById('error-message-' + userId).textContent = "Failed to update the name.";
+            console.error('Error:', error);
+        });
+    }
+
+    $('#passwordModal').on('show.bs.modal', function (event) {
+        const button = $(event.relatedTarget); // Button that triggered the modal
+        const userId = button.data('user-id'); // Extract user ID from data-* attributes
+        const modal = $(this);
+
+        // Attach the userId to the form submission
+        modal.find('#passwordForm').off('submit').on('submit', function (e) {
+            e.preventDefault();
+            const currentPassword = modal.find('#currentPassword').val();
+            const newPassword = modal.find('#newPassword').val();
+
+            fetch(`/users/${userId}/password`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    currentPassword,
+                    newPassword
+                }),
+            })
+            .then(response => response.json())
+            .then(result => {
+                alert(result.message || "Password updated successfully!");
+                $('#passwordModal').modal('hide');
+            })
+            .catch(error => {
+                alert("Error changing password");
+                console.error(error);
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

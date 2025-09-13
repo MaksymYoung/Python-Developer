@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Deck</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1000px;
+            margin-top: 50px;
+        }
+        h2, h3 {
+            color: #007bff;
+        }
+        table {
+            margin-top: 30px;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+        }
+        td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .card-table-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .tip-column {
+            width: 200px;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .editable {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <form id="deck-form" method="POST" action="/decks/{{ deck.id }}/update">
+        <div class="form-group mb-3">
+            <label for="name">Deck Name:</label>
+            <input type="text" id="name" name="name" class="form-control" value="{{ deck.name }}" required>
+        </div>
+
+        <div class="card-table-container mt-5">
+            <!-- Button to create new card -->
+            <div class="d-flex justify-content-start mb-3">
+                <button id="create-card-btn" class="btn btn-success" type="button">Create Card</button>
+            </div>
+
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Word (English)</th>
+                    <th>Translation (Ukrainian)</th>
+                    <th class="tip-column">Tip</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="cards-table-body">
+                {% for card in deck.cards %}
+                <tr data-card-id="{{ card.id }}">
+                    <td><input type="text" class="form-control word" value="{{ card.word }}" readonly></td>
+                    <td><input type="text" class="form-control translation" value="{{ card.translation }}" readonly>
+                    </td>
+                    <td><input type="text" class="form-control tip" value="{{ card.tip }}" readonly></td>
+
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success btn-sm" onclick="updateCard(this)">Update
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mt-3">Update Deck</button>
+    </form>
+
+    <a href="/decks" class="btn btn-secondary mt-3">All Decks</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    document.getElementById('create-card-btn').addEventListener('click', function () {
+    const tableBody = document.getElementById('cards-table-body');
+    const updateDeckButton = document.querySelector('button[type="submit"]');
+
+    // Create a new row for a new card
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td><input type="text" class="form-control word" placeholder="Word (English)"></td>
+        <td><input type="text" class="form-control translation" placeholder="Translation (Ukrainian)"></td>
+        <td><input type="text" class="form-control tip" placeholder="Tip"></td>
+        <td>
+            <button type="button" class="btn btn-success btn-sm" onclick="updateCard(this)">Update</button>
+            <button type="button" class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button>
+        </td>
+    `;
+    tableBody.appendChild(newRow);
+});
+
+    function updateCard(button) {
+    const row = button.closest('tr');
+    const inputs = row.querySelectorAll('input');
+
+    if (button.textContent === 'Update') {
+        // Switch to edit mode
+        inputs.forEach(input => input.removeAttribute('readonly'));
+        button.textContent = 'Save';
+    } else {
+        // Switch back to readonly mode and save the changes
+        inputs.forEach(input => input.setAttribute('readonly', true));
+        button.textContent = 'Update';
+
+        // Collect the updated card data
+        const cardId = row.dataset.cardId;  // Card ID from data attribute
+        const updatedCard = {
+            word: inputs[0].value,
+            translation: inputs[1].value,
+            tip: inputs[2].value
+        };
+
+        // Send an AJAX request to update the card
+        $.ajax({
+            url: '/cards/edit/' + cardId,  // Use the correct endpoint
+            method: 'POST',
+            data: updatedCard
+        });
+    }
+}
+
+   function deleteRow(button) {
+    const row = button.closest('tr');
+    const cardId = row.dataset.cardId;  // Get the card ID from the row's data attribute
+
+    // Send an AJAX request to delete the card
+    $.ajax({
+        url: `/cards/${cardId}/delete`,  // Use the correct endpoint
+        method: 'POST',  // Make sure to use POST for deletion
+        success: function(response) {
+            // If the server responds successfully, remove the row from the table
+            row.remove();
+            alert('Card deleted successfully!');
+        },
+        error: function(xhr) {
+            alert('Failed to delete card: ' + (xhr.responseJSON?.error || 'Unknown error'));
+        }
+    });
+}
+
+   document.getElementById('deck-form').addEventListener('submit', function (event) {
+   event.preventDefault();
+
+    const deckName = document.getElementById('name').value;  // Get the deck name
+    if (!deckName) {
+        return;
+    }
+
+    // Collect card data from table rows
+    const rows = document.querySelectorAll('#cards-table-body tr');  // Ensure to query rows properly
+    const cards = Array.from(rows).map(row => ({
+        word: row.querySelector('.word').value,
+        translation: row.querySelector('.translation').value,
+        tip: row.querySelector('.tip').value
+    }));
+
+    // Add card data to hidden input, even if it's empty
+    const cardsDataInput = document.createElement('input');
+    cardsDataInput.type = 'hidden';
+    cardsDataInput.name = 'cards';  // Ensure the name matches what's expected in the server
+    cardsDataInput.value = JSON.stringify(cards);
+
+    this.appendChild(cardsDataInput);  // Append the input to the form before submission
+
+    // Now submit the form
+    this.submit();
+});
+
+</script>
+
+</body>
+</html>

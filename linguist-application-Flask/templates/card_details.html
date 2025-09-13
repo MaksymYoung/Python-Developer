@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+        .card-body {
+            font-size: 1.1rem;
+        }
+        .btn-back {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header text-center">
+                <h4>Card Details</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <p><strong>Card ID:</strong></p>
+                    </div>
+                    <div class="col-md-8">
+                        <p>{{ card.id }}</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <p><strong>Word (English):</strong></p>
+                    </div>
+                    <div class="col-md-8">
+                        <p>{{ card.word }}</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <p><strong>Translation (Ukrainian):</strong></p>
+                    </div>
+                    <div class="col-md-8">
+                        <p>{{ card.translation }}</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <p><strong>Tip:</strong></p>
+                    </div>
+                    <div class="col-md-8">
+                        <p>{{ card.tip }}</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="{{ url_for('list_cards') }}" class="btn btn-secondary btn-lg btn-back">Back to All Cards</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

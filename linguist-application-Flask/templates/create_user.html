@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            word-wrap: break-word; /* Allow text to wrap within input field */
+            white-space: normal; /* Ensure that text will break into a new line when necessary */
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Add media query for responsiveness */
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+            }
+
+            input[type="text"], input[type="email"], input[type="password"], button[type="submit"] {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+    <script>
+         function hideError(inputId, errorId) {
+            const input = document.getElementById(inputId);
+            const error = document.getElementById(errorId);
+
+            input.addEventListener('input', () => {
+                if (input.value.trim() !== '') {
+                    error.textContent = '';
+                }
+            });
+        }
+
+        function checkEmailUnique() {
+            const emailInput = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+
+            emailInput.addEventListener('input', () => {
+                if (emailInput.value.trim() === '') {
+                    emailError.textContent = 'Email is required.';
+                    return;
+                }
+
+                fetch('/users/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-Requested-With': 'XMLHttpRequest',
+                    },
+                    body: new URLSearchParams({ email: emailInput.value }),
+                })
+                    .then(response => {
+                        if (response.status === 200) {
+                            emailError.textContent = '';
+                        } else {
+                            response.json().then(data => {
+                                emailError.textContent = data.error;
+                            });
+                        }
+                    })
+                    .catch(() => {
+                        emailError.textContent = 'An error occurred. Please try again.';
+                    });
+            });
+        }
+
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var passwordError = document.getElementById("password-error");
+
+            // Clear any existing error messages
+            passwordError.textContent = "";
+
+            // Check password length
+            if (password.length < 6) {
+                passwordError.textContent = "Password must be at least 6 characters long.";
+                return false;
+            }
+
+            // Check if password contains uppercase letter, lowercase letter, number, and special character
+            if (!/[A-Z]/.test(password)) {
+                passwordError.textContent = "Password must contain at least one uppercase letter.";
+                return false;
+            }
+            if (!/[a-z]/.test(password)) {
+                passwordError.textContent = "Password must contain at least one lowercase letter.";
+                return false;
+            }
+            if (!/[0-9]/.test(password)) {
+                passwordError.textContent = "Password must contain at least one number.";
+                return false;
+            }
+            if (!/[\W_]/.test(password)) {
+                passwordError.textContent = "Password must contain at least one special character.";
+                return false;
+            }
+
+            return true;
+        }
+
+        function confirmPassword() {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm-password').value;
+
+            // Validate confirm password
+            if (password !== confirmPassword) {
+                document.getElementById("confirm-password-error").textContent = 'Passwords do not match.';
+            }
+            return true;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            hideError('name', 'name-error');
+            hideError('password', 'password-error');
+            checkEmailUnique();
+            document.getElementById('password').addEventListener('input', validatePassword);
+            document.getElementById('confirm_password').addEventListener('input', confirmPassword);
+    });
+    </script>
+</head>
+<body>
+    <h1>Create User</h1>
+    <div class="container">
+        <form method="POST" action="/users/create">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" value="{{ data.get('name', '') }}">
+            <div class="error" id="name-error">{{ errors.get('name', '') }}</div>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value="{{ data.get('email', '') }}">
+            <div class="error" id="email-error">{{ errors.get('email', '') }}</div>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password">
+            <div class="error" id="password-error">{{ errors.get('password', '') }}</div>
+
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" name="confirm_password" id="confirm_password">
+            <div class="error" id="confirm_password-error">{{ errors.get('confirm_password', '') }}</div>
+
+            <button type="submit">Create</button>
+        </form>
+    </div>
+    <a href="{{ url_for('index') }}">Back to user list</a>
+</body>
+</html>

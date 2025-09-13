@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtered Cards</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <!-- Button to navigate to the users table -->
+    <a href="/cards" class="btn btn-secondary m-3">Back to Cards</a>
+    <h2 class="text-center my-4">Filtered Cards</h2>
+
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>Card Number</th>
+            <th>User ID</th>
+            <th>Deck ID</th>
+            <th>Word (English)</th>
+            <th>Translation (Ukrainian)</th>
+            <th>Tip</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="cards-table-body">
+        {% for card in cards %}
+        <tr>
+            <td>{{ card.id }}</td>
+            <td>{{ card.deck.user_id }}</td>
+            <td>{{ card.deck_id }}</td>
+            <td>{{ card.word }}</td>
+            <td>{{ card.translation }}</td>
+            <td>{{ card.tip }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
