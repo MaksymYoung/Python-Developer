@@ -1,0 +1,12 @@
+<div id="authors-formset">
+    {{ author_formset.management_form }}
+    {% for form in author_formset %}
+    <div class="mb-3 d-flex align-items-center author-row">
+        {{ form.id }}
+        {{ form.author }}
+        {{ form.DELETE }}
+        <button type="button" class="btn btn-success btn-sm ms-2 add-author">+</button>
+        <button type="button" class="btn btn-danger btn-sm ms-2 remove-author">−</button>
+    </div>
+    {% endfor %}
+</div>
