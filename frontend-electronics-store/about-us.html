@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <link
+      rel="shortcut icon"
+      href="https://placekitten.com/96/139"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./css/about-us.css" />
+    <script
+      src="https://unpkg.com/htmx.org@1.9.10"
+      integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/index.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Nazar Yaremii-->
+    <header
+      data-hx-trigger="load"
+      data-hx-swap="outerHTML"
+      data-hx-get="./global.header.partial.html"
+    ></header>
+    <!-- End partial Nazar Yaremii -->
+
+    <main>
+      <!-- Lypnytskyi Artem -->
+      <!-- hero-section -->
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="./index.about-us-our-way.html"
+      ></section>
+      <!-- End partial Lypnytskyi Artem -->
+
+      <!-- Denys Ocheretnyy -->
+      <section></section>
+      <!-- End partial Denys Ocheretnyy -->
+
+      <!-- Yankovskyi Oleksandr -->
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="./index.about-us.vacancies.partial.html"
+      ></section>
+      <!-- End partial Yankovskyi Oleksandr -->
+    </main>
+
+    <!-- Andrii Makovetskyi -->
+    <footer>
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="global.footer.partial.html"
+      ></section>
+    </footer>
+
+    <!-- Nazar Yaremii-->
+    <div
+      data-hx-trigger="load"
+      data-hx-swap="outerHTML"
+      data-hx-get="./global.scroll-to-top.partial.html"
+    ></div>
+    <!-- End partial Nazar Yaremii -->
+  </body>
+  <script src="./js/about-us.js"></script>
+</html>

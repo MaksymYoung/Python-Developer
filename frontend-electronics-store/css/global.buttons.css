@@ -1,0 +1,81 @@
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-primary-white);
+  padding: 12px 21px;
+  font-family: var(--font-text);
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transiton-primary-all);
+  align-self: flex-start;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary);
+}
+
+.btn[disabled],
+.btn-disabled {
+  background-color: var(--color-accent);
+  color: var(--color-primary-white);
+  padding: 12px 21px;
+  font-family: var(--font-text);
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: not-allowed;
+  transition: var(--transiton-primary-all);
+  align-self: flex-start;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.btn-secondary {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  display: block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: var(--font-text);
+  font-size: 14px;
+  font-weight: 600;
+  background-color: var(--color-secondary-button);
+  color: var(--color-primary-white);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-accent);
+  transition: var(--transiton-primary-all);
+}
+
+.btn-outline-dark {
+  border-width: 2px;
+  border-radius: 8px;
+  border-color: var(--color-primary);
+  border-style: solid;
+  font-family: var(--font-text);
+  font-size: 14px;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: var(--color-primary);
+  font-weight: bold;
+  transition: var(--transiton-primary-all);
+}
+
+.btn-outline-dark:hover {
+  background-color: var(--color-primary);
+  color: var(--color-primary-white);
+}

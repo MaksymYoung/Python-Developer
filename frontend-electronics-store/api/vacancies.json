@@ -1,0 +1,77 @@
+[
+  {
+    "jobTitle": "In-Store Tech Specialist",
+    "employmentType": "Full-time",
+    "experienceRequired": "5 years of experience",
+    "salary": "$55,000",
+    "salaryPeriod": "per year",
+    "officeLocation": "San Francisco, CA",
+    "companyLogo": "img/about-us/headphones-logo.svg",
+    "logoDescription": "Headphones logo",
+    "vacancieDescription": "As a Technical Specialist, you will be the first point of contact for customers experiencing technical issues with the gadgets they have purchased. You’ll decide on the need for repairs and maintenance.",
+    "responsibilities": [
+      "Provide technical assistance",
+      "Troubleshoot and diagnose",
+      "Product setup and installation",
+      "Customer education"
+    ],
+    "benefits": [
+      "Annual bonuses",
+      "Health, dental insurance",
+      "Employee discounts",
+      "24 days off",
+      "Nice team of colleagues"
+    ],
+    "benefitIcon": "img/about-us/check-mark.svg"
+  },
+  {
+    "jobTitle": "In-Store Sales Associate",
+    "employmentType": "Full-time",
+    "experienceRequired": "1 year of experience",
+    "salary": "$35,000",
+    "salaryPeriod": "per year",
+    "officeLocation": "San Francisco, CA",
+    "companyLogo": "img/about-us/headphones-logo.svg",
+    "logoDescription": "Headphones logo",
+    "vacancieDescription": "As a Sales Associate, you will help customers discover the latest tech and provide personalized recommendations. If you love technology and enjoy interacting with people, this position is for you.",
+    "responsibilities": [
+      "Assist customers with product selection",
+      "Maintain product displays",
+      "Handle in-store transactions",
+      "Provide live product demos to customers"
+    ],
+    "benefits": [
+      "Annual bonuses",
+      "Health, dental insurance",
+      "Employee discounts",
+      "Ongoing training",
+      "Dynamic work environment"
+    ],
+    "benefitIcon": "img/about-us/check-mark.svg"
+  },
+  {
+    "jobTitle": "Customer Support Agent",
+    "employmentType": "Full-time",
+    "experienceRequired": "2 years of experience",
+    "salary": "$40,000",
+    "salaryPeriod": "per year",
+    "officeLocation": "Remote position",
+    "companyLogo": "img/about-us/headphones-logo.svg",
+    "logoDescription": "Headphones logo",
+    "vacancieDescription": "As a Technical Support Specialist, you will be the first point of contact for customers experiencing technical issues with our products. You’ll play a crucial role in ensuring our customers receive support.",
+    "responsibilities": [
+      "Respond to customer queries",
+      "Assist with order tracking, returns, and refunds",
+      "Guide customers through the purchasing process",
+      "Improve the online shopping experience with the team"
+    ],
+    "benefits": [
+      "Annual bonuses",
+      "Health, dental insurance",
+      "Employee discounts",
+      "Flexible working hours",
+      "Supportive team"
+    ],
+    "benefitIcon": "img/about-us/check-mark.svg"
+  }
+]

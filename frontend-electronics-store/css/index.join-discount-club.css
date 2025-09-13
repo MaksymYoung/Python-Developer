@@ -1,0 +1,163 @@
+.discount-club__top {
+  justify-content: center;
+  max-width: 100%;
+  width: 1170px;
+  height: 387px;
+  background-image: url("img/join-discount-club/background-discount-club.webp");
+  background-size: cover;
+  background-position: center;
+  border-radius: 7px;
+  padding: 56px;
+}
+@media (max-width: 520px) {
+  .discount-club__top {
+    padding: 30px;
+    height: 497px;
+  }
+}
+@media (max-width: 340px) {
+  .discount-club__top {
+    padding: 30px;
+    height: 497px;
+  }
+}
+.discount-club__title-block {
+  max-width: 100%;
+  width: 1050px;
+  height: 77px;
+}
+.discount-club__title {
+  font-family: var(--font-title);
+  color: #272727;
+  text-align: left;
+  font-size: 64px;
+  margin: 0px 0px 25px;
+}
+@media (max-width: 990px) {
+  .discount-club__title {
+    font-size: 52px;
+  }
+}
+@media (max-width: 770px) {
+  .discount-club__title {
+    font-size: 40px;
+  }
+}
+.discount-club__title span {
+  color: #fe7a15;
+  text-align: center;
+}
+.discount-club__description {
+  font-family: var(--font-text);
+  font-size: 19px;
+  color: #4d4d4d;
+  margin: 0px 0px 25px;
+}
+.discount-club__description span {
+  font-weight: 600;
+}
+.discount-club__note {
+  font-family: var(--font-text);
+  font-size: 15px;
+  color: #6a6a6a;
+}
+.discount-club__cta-button {
+  background-color: var(--color-accent);
+  color: var(--color-primary-white);
+  text-decoration: none;
+  font-family: var(--font-text);
+  font-size: 15.4px;
+  font-weight: 600;
+  text-align: center;
+  padding: 16px 38px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  top: 35px;
+}
+.discount-club__cta-button:hover {
+  background-color: #272727;
+}
+.discount-club__bottom {
+  display: flex;
+}
+@media (max-width: 990px) {
+  .discount-club__bottom {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 770px) {
+  .discount-club__bottom {
+    text-align: center;
+  }
+}
+.discount-club__card {
+  display: flex;
+  flex-direction: column;
+  padding: 46px 30px;
+  box-sizing: border-box;
+}
+@media (max-width: 990px) {
+  .discount-club__card {
+    width: calc(50% - 0px);
+  }
+}
+@media (max-width: 480px) {
+  .discount-club__card {
+    width: 100%;
+  }
+}
+.discount-club__icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 20 0;
+}
+@media (max-width: 770px) {
+  .discount-club__icon {
+    margin: 0 auto;
+    width: 50px;
+  }
+}
+.discount-club__card-title {
+  font-family: var(--font-text);
+  font-size: 24px;
+  color: #272727;
+  font-weight: 700;
+  margin: 17px 0px 0px;
+  max-width: 100%;
+  overflow: hidden;
+}
+@media (max-width: 770px) {
+  .discount-club__card-title {
+    font-size: 22px;
+  }
+}
+.discount-club__card-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 5px;
+  background-color: #1b4c97;
+  margin: 17px 0px 0px;
+}
+@media (max-width: 770px) {
+  .discount-club__card-title::after {
+    margin: 17px auto;
+  }
+}
+.discount-club__card-description {
+  font-size: 17px;
+  color: #6a6a6a;
+  margin: 17px 0px 0px;
+}
+@media (max-width: 770px) {
+  .discount-club__card-description {
+    margin: 0px auto;
+  }
+}
+.discount-club__card-description span {
+  width: 226px;
+  height: 46px;
+}

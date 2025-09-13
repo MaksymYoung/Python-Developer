@@ -1,0 +1,138 @@
+{
+  "cards": [
+    {
+      "id": 1,
+      "name": "AeroBeats 500",
+      "price": 124.0,
+      "oldPrice": null,
+      "category": "headphones",
+      "image": "./img/hero-index/popular/aerobeats-500.png",
+      "promoLabel": "sale",
+      "colors": ["black", "white"],
+      "connections": ["wired"]
+    },
+    {
+      "id": 2,
+      "name": "AeroTrack 300",
+      "price": 39.0,
+      "oldPrice": 49.0,
+      "category": "mice",
+      "image": "./img/categories-cards/aerotrack.png",
+      "promoLabel": null,
+      "colors": ["black"],
+      "connections": ["wired", "bluetooth"]
+    },
+    {
+      "id": 3,
+      "name": "AeroWave 250",
+      "price": 95.0,
+      "oldPrice": null,
+      "category": "headphones",
+      "image": "./img/hero-index/popular/aerowave-250.png",
+      "promoLabel": null,
+      "colors": ["green", "orange"],
+      "connections": ["wired", "bluetooth"]
+    },
+    {
+      "id": 4,
+      "name": "Grip X5",
+      "price": 32.0,
+      "oldPrice": 38.0,
+      "category": "mice",
+      "image": "./img/categories-cards/aerogrip.png",
+      "promoLabel": null,
+      "colors": ["red", "black"],
+      "connections": ["wired", "bluetooth"]
+    },
+    {
+      "id": 5,
+      "name": "LumiMouse Pro",
+      "price": 42.0,
+      "oldPrice": 49.0,
+      "category": "mice",
+      "image": "./img/hero-index/popular/lumimouse-pro.png",
+      "promoLabel": "new",
+      "colors": ["pink"],
+      "connections": ["wired", "bluetooth"]
+    },
+    {
+      "id": 6,
+      "name": "LumiVision",
+      "price": 199.99,
+      "oldPrice": null,
+      "category": "monitors",
+      "image": "./img/categories-cards/lumivision.png",
+      "promoLabel": null,
+      "screenSize": 24,
+      "colors": ["black"],
+      "connections": ["wired", "bluetooth"]
+    },
+    {
+      "id": 7,
+      "name": "NeuroKey 1000",
+      "price": 65.0,
+      "oldPrice": 72.0,
+      "category": "keyboards",
+      "image": "./img/categories-cards/neurokey.png",
+      "promoLabel": "sale",
+      "colors": ["blue", "black"],
+      "connections": ["wired", "bluetooth"]
+    },
+    {
+      "id": 8,
+      "name": "NeuroSound 700",
+      "price": 105.0,
+      "oldPrice": null,
+      "category": "headphones",
+      "image": "./img/hero-index/popular/neurosound-700.png",
+      "promoLabel": "new",
+      "colors": ["white"],
+      "connections": ["wired", "bluetooth"]
+    },
+    {
+      "id": 9,
+      "name": "NovaMouse 2000",
+      "price": 35.0,
+      "oldPrice": 40.0,
+      "category": "mice",
+      "image": "./img/categories-cards/novamouse.png",
+      "promoLabel": "free shipping",
+      "colors": ["black"],
+      "connections": ["wired", "bluetooth"]
+    },
+    {
+      "id": 10,
+      "name": "NovaScreen Ultra",
+      "price": 210.0,
+      "oldPrice": null,
+      "category": "monitors",
+      "image": "./img/hero-index/popular/novascreen-ultra.png",
+      "promoLabel": "bestseller",
+      "screenSize": 27,
+      "colors": ["white"],
+      "connections": ["wired", "bluetooth"]
+    },
+    {
+      "id": 11,
+      "name": "NovaSound Pro 3000",
+      "price": 92.0,
+      "oldPrice": null,
+      "category": "headphones",
+      "image": "./img/hero-index/popular/novasound-pro-3000.png",
+      "promoLabel": "limited",
+      "colors": ["orange"],
+      "connections": ["wired", "bluetooth"]
+    },
+    {
+      "id": 12,
+      "name": "QuantumBoard X1",
+      "price": 54.0,
+      "oldPrice": 60.0,
+      "category": "keyboards",
+      "image": "./img/hero-index/popular/quantumboard-x1.png",
+      "promoLabel": "new",
+      "colors": ["white"],
+      "connections": ["wired", "bluetooth"]
+    }
+  ]
+}

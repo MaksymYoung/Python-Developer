@@ -1,0 +1,42 @@
+.sale__wrapper {
+  text-align: center;
+}
+.sale__title {
+  display: block;
+  color: var(--color-accent-additional);
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+  justify-content: center;
+  padding-top: 46px;
+  margin: 0px 0px 20px;
+}
+.sale__description {
+  font-size: 64px;
+  font-family: var(--font-title);
+}
+@media (max-width: 990px) {
+  .sale__description {
+    font-size: 52px;
+  }
+}
+@media (max-width: 770px) {
+  .sale__description {
+    font-size: 40px;
+  }
+}
+.sale__description span {
+color: #1c4c97;
+}
+.sale__note {
+  font-family: var(--font-text);
+  font-weight: 600;
+  color: #6a6a6a;
+  font-size: 19px;
+}
+@media (max-width: 770px) {
+  .sale__note {
+    font-weight: normal;
+  }
+}

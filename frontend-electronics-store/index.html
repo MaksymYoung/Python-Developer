@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electronics Store</title>
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/index.css" />
+    <script
+      src="https://unpkg.com/htmx.org@1.9.10"
+      integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Nazar Yaremii-->
+    <header
+      data-hx-trigger="load"
+      data-hx-swap="outerHTML"
+      data-hx-get="./global.header.partial.html"
+    ></header>
+    <!-- End partial Nazar Yaremii -->
+     
+    <main>
+      <!-- Svitlana Voron`ko -->
+      <!-- hero-section -->
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="./index.hero.partial.html"
+      ></section>
+      <!-- bestseller-section -->
+      <div
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="./index.bestseller.partial.html"
+      ></div>
+      <!-- popular-items-section -->
+      <section
+        class="popular-items"
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="./index.popular-items.partial.html"
+      ></section>
+      <!-- End partial Svitlana Voron`ko -->
+
+      <!-- Домініка Сливка -->
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="index.offers.partial.html"
+      ></section>
+      <!-- End partial Домініка Сливка -->
+
+      <!-- Maksym Zymyn -->
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="index.categories.partial.html"
+      ></section>
+      <!-- End partial Maksym Zymyn -->
+
+      <!-- Viontsek Markian -->
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="./index.join-discount-club.partial.html "
+      ></section>
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="./index.sale.partial.html"
+      ></section>
+      <!-- End partial Viontsek Markian -->
+
+      <!-- Віталіна Гавалешко -->
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="./index.neurodisplay.partial.html"
+      ></section>
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="./index.latest_products.partial.html"
+      ></section>
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="./index.swiper.html"
+      ></section>
+      <!-- End partial Віталіна Гавалешко -->
+
+      <!-- Halyna Fedkiv -->
+      <section
+        class="new-product"
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="index.new-product.partial.html"
+      ></section>
+      <section
+        class="deals"
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="index.deals.partial.html"
+      ></section>
+      <!-- End partial Halyna Fedkiv -->
+
+      <!-- Anna Yatsenko  -->
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="index.our-clients-about-us.partial.html"
+      ></section>
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="index.read-about-the-top-gadgets.partial.html"
+      ></section>
+      <!-- End partial Anna Yatsenko  -->
+    </main>
+
+    <!-- Andrii Makovetskyi -->
+    <footer>
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="global.footer.partial.html"
+      ></section>
+    </footer>
+    <!-- End partial Andrii Makovetskyi -->
+
+    <!-- Nazar Yaremii-->
+    <div
+      data-hx-trigger="load"
+      data-hx-swap="outerHTML"
+      data-hx-get="./global.scroll-to-top.partial.html"
+    ></div>
+    <!-- End partial Nazar Yaremii -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

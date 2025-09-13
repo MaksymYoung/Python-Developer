@@ -1,0 +1,43 @@
+.scroll-to-top {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+  position: fixed;
+  z-index: 99;
+  display: block;
+  width: 50px;
+  height: 50px;
+  bottom: 5%;
+  right: 5%;
+
+  @media (min-width: 768px) {
+    width: 60px;
+    height: 60px;
+  }
+
+  &.scroll-to-top--visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .scroll-to-top__wrapper {
+    transition: var(--transiton-primary-all);
+    background-color: var(--color-primary-white);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    @media (min-width: 768px) {
+      padding: 15px;
+    }
+    .scroll-to-top__svg {
+      stroke: var(--color-primary);
+    }
+  }
+}

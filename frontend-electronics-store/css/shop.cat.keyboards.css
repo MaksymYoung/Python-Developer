@@ -1,0 +1,222 @@
+/* Halyna Fedkiv */
+.keyboards {
+  display: block;
+  background-color: var(--color-primary-white);
+  position: relative;
+
+  .keyboards__container {
+    padding: 90px 24px;
+    min-width: 320px;
+    max-width: 1200px;
+    flex-basis: 100%;
+    margin: 0 auto;
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      padding: 95px 32px;
+    }
+
+    @media (min-width: 992px) and (max-width: 1279px) {
+      padding: 100px 40px;
+    }
+
+    @media (min-width: 1280px) {
+      padding: 100px 15px;
+    }
+
+    .keyboards__header {
+      display: block;
+      justify-content: center;
+
+      .keyboards__header-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        max-width: 100%;
+        text-align: left;
+
+        .keyboards__header-homepage {
+          display: block;
+
+          .header-homepage {
+            display: inline-block;
+            cursor: pointer;
+            font-size: 17px;
+            font-family: var(--font-text);
+            text-decoration-line: none;
+            color: var(--color-primary);
+            line-height: 23.8px;
+          }
+        }
+        .keyboards__header-title {
+          display: block;
+          position: relative;
+
+          .header-title {
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 42px;
+            color: var(--color-primary);
+            margin: 0;
+
+            @media (min-width: 768px) and (max-width: 991px) {
+              font-size: 33px;
+              line-height: 46.2px;
+            }
+
+            @media (min-width: 992px) {
+              font-size: 36px;
+              line-height: 50.4px;
+            }
+          }
+        }
+
+        .keyboards__header-description {
+          display: block;
+          position: relative;
+          margin-top: 16px;
+          justify-content: flex-start;
+
+          .header-description {
+            font-size: 17px;
+            font-family: var(--font-text);
+          }
+        }
+      }
+    }
+    .keyboards__content {
+      display: block;
+      margin-top: 45px;
+
+      @media (min-width: 992px) {
+        margin-top: 50px;
+      }
+
+      .keyboards__products {
+        display: flex;
+        flex-basis: 100%;
+        flex-direction: column;
+        justify-content: flex-start;
+        max-width: 100%;
+        min-width: 0;
+        column-gap: 30px;
+        row-gap: 16px;
+
+        .keyboards__products-title {
+          font-size: 30px;
+          font-weight: 700;
+          font-family: var(--font-text);
+          color: var(--color-primary);
+
+          @media (min-width: 768px) and (max-width: 991px) {
+            font-size: 33px;
+          }
+
+          @media (min-width: 992px) {
+            font-size: 36px;
+          }
+        }
+        .product-gallery__grid {
+          display: flex;
+          flex-basis: 100%;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin-top: 25px;
+        }
+      }
+      .pagination__container {
+        display: flex;
+        flex-direction: column-reverse;
+        position: relative;
+        text-align: left;
+        margin-top: 56px;
+
+        @media (min-width: 768px) {
+          display: block;
+        }
+
+        .products-per-page {
+          display: block;
+          position: static;
+          text-align: center;
+          z-index: 2;
+
+          @media (min-width: 768px) {
+            position: absolute;
+            text-align: left;
+            font-size: 17px;
+          }
+
+          .products-per-page__label {
+            color: var(--color-primary);
+            font-size: 12px;
+
+            @media (min-width: 768px) {
+              font-size: 17px;
+            }
+          }
+        }
+        .pagination__select {
+          display: inline-block;
+          position: relative;
+          border-radius: 3px;
+          border: 1px solid #c5cbd6;
+          box-shadow: 0 1px 0 rgba(33, 39, 54, 0.12);
+          color: rgb(0, 0, 0);
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 13.3px;
+          height: 28px;
+          margin-left: 8px;
+          padding-left: 12px;
+          padding-right: 30px;
+        }
+
+        .pagination {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 16px;
+
+          .page-arrow:first-child {
+            margin-right: 6px;
+            font-size: 17px;
+            margin: 0;
+          }
+
+          .page-arrow:last-child {
+            margin-left: 6px;
+            font-size: 17px;
+          }
+
+          .page-arrow svg {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            fill: var(--color-primary);
+          }
+
+          .page-arrow.disabled {
+            pointer-events: none;
+            opacity: 0.5;
+          }
+
+          .page-link {
+            background-color: var(--color-accent-additional);
+            color: var(--color-primary-white);
+            font-size: 12px;
+            font-family: var(--font-text);
+            text-align: center;
+            border-radius: 6px;
+            border: none;
+            min-width: 28px;
+            margin-left: 4px;
+            padding: 6px 0;
+
+            &:hover {
+              background-color: var(--color-primary);
+            }
+          }
+        }
+      }
+    }
+  }
+}

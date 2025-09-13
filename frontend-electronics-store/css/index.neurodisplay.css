@@ -1,0 +1,190 @@
+.neurodisplay{
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.neurodisplay__container{
+    display: block;
+    min-width: 320px;
+    margin: 0;
+    padding: 0;
+
+    @media (min-width: 767px) and (max-width: 991px) {
+        padding: 105px 0px;
+    } 
+}
+
+.neurodisplay__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    flex-wrap: wrap;
+    background: var(--color-bg-second);
+    vertical-align: baseline;
+
+    /* Зображення збоку до адаптації */
+    flex-direction: row;
+
+    @media (max-width: 768px) {
+        /* Зображення переходить під текст */
+        flex-direction: column;
+    }
+}
+
+.neurodisplay_image-container {
+    flex: 1;
+    max-width: 50%; /* Зображення займає 50% ширини */
+    position: relative;
+    overflow: hidden;
+    padding-top: 60%; /* Зберігаємо пропорції зображення */
+    margin: 0;
+
+    @media (max-width: 768px) {
+        /* Зображення займає всю ширину на мобільних пристроях */
+        flex-basis: 100%;
+        max-width: 100%;
+        padding-top: 0;
+    }
+}
+
+.neurodisplay_image {
+    width: 100%; /* Зображення розтягується на всю ширину контейнера */
+    height: auto; /* Зберігаємо пропорції зображення */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    @media (max-width: 768px) {
+        position: static; /* Виправляємо позиціонування для мобільних пристроїв */
+        width: 100%;
+        height: auto;
+    }
+}
+
+.neurodisplay__text_container {
+    flex: 1;
+    max-width: 50%; /* Текст займає 50% ширини */
+    padding: 0 20px;
+
+    @media (max-width: 768px) {
+        /* Текст займає всю ширину на мобільних пристроях */
+        flex-basis: 100%;
+        max-width: 100%;
+        padding: 20px;
+    }
+}
+
+.neurodisplay__title{
+    display: block;
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-size: 42px;
+    
+}
+
+.slash{
+    color: --color-accent;
+}
+
+.neurodisplay__status{
+    color: var(--color-accent-additional);
+    font-family: var(--font-text);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16.8px;
+    margin: 0;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+}
+
+.neurodisplay__price{
+    color: var(--color-accent-additional);
+    font-family: var(--font-text);
+    display: block;
+    margin: 0px;
+    font-size: 30px;
+    line-height: 42px;
+    font-weight: 700;
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        font-size: 33px;
+        line-height: 46.2px;
+}
+
+@media (min-width: 992px) {
+        font-size: 36px;
+        line-height: 50.4px;
+}
+}
+
+.neurodisplay__description{
+    color: var(--color-text-body);
+    font-family: var(--font-text);
+    display: block;
+    font-size: 17px;
+    line-height: 23.8px;
+    /* font-weight: 400; */
+    margin-top: 25px;
+    margin-bottom: 0;
+}
+
+.neurodisplay__specs-title{
+    color: var(--color-accent);
+    font-family: var(--font-text);
+    display: block;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 28.6px;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.neurodisplay__specs{
+color: var(--color-text-body);
+font-family: var(--font-text);
+display: block;
+font-size: 14px;
+line-height: 19.6px;
+margin-top: 20px;
+}
+
+.neurodisplay__specs-item{
+    margin: 0;
+}
+
+
+.neurodisplay__specs-item_bold{
+    font-weight: 700;
+    line-height: 19.6 px;
+}
+
+.neurodisplay__button{
+    display: flex;
+    margin-top: 35px;
+    border: none;
+}
+
+.button_order{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 12px 21px;
+    font-family: var(--font-text);
+    background-color: var(--color-accent-additional);
+    color: var(--color-primary-white);
+    border: 1px solid var(--color-accent-additional);
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--color-primary);
+        border: 1px solid var(--color-primary);
+    }
+}

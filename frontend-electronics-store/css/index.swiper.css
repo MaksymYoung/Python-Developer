@@ -1,0 +1,160 @@
+/* Контейнер для слайдера */
+.swiper-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Основний блок Swiper */
+.swiper {
+  width: 80%;
+  max-width: 1200px;
+}
+
+/* Обгортка слайдів */
+.swiper-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* Окремий слайд */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Контейнер зображення та тексту */
+.swiper-slide-block {
+  background: #f1ece9;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Розмір зображень */
+.swiper-slide img {
+  width: 90px;
+  height: auto;
+}
+
+/* Текст під зображенням */
+.swiper-slide span {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Кнопки навігації */
+.swiper-button-next,
+.swiper-button-prev {
+  width: 40px;
+  height: 40px;
+  background-color: #3c64a3;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+}
+
+/* Іконки кнопок */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px;
+  color: #fff;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+  .swiper {
+      width: 90%;
+  }
+  .swiper-slide img {
+      width: 80px;
+  }
+}
+/* Контейнер для слайдера */
+.swiper-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Основний блок Swiper */
+.swiper {
+  width: 80%;
+  max-width: 1200px;
+}
+
+/* Обгортка слайдів */
+.swiper-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* Окремий слайд */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Контейнер зображення та тексту */
+.swiper-slide-block {
+  background: #f1ece9;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Розмір зображень */
+.swiper-slide img {
+  width: 90px;
+  height: auto;
+}
+
+/* Текст під зображенням */
+.swiper-slide span {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Кнопки навігації */
+.swiper-button-next,
+.swiper-button-prev {
+  width: 40px;
+  height: 40px;
+  background-color: #3c64a3;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+}
+
+/* Іконки кнопок */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px;
+  color: #fff;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+  .swiper {
+      width: 90%;
+  }
+  .swiper-slide img {
+      width: 80px;
+  }
+}

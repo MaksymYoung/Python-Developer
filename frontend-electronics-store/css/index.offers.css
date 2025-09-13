@@ -1,0 +1,204 @@
+.offers__section-one {
+  display: block;
+  padding: 10px 24px 30px;
+}
+
+.offers__group-one {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.offers__bg {
+  position: relative;
+  min-width: 272px;
+  min-height: 460px;
+  word-wrap: break-word;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 20% 80%;
+  border-radius: 10px;
+}
+
+.offers__content {
+  display: flex;
+  flex-direction: column;
+  max-width: none;
+  padding: 46px 30px;
+  text-align: left;
+  /* height: 100%; */
+}
+
+.offers__title {
+  display: inline-block;
+  color: var(--color-primary);
+  font-family: var(--font-text);
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.offers__price-accent-big {
+  display: inline-block;
+  color: var(--color-accent);
+  font-family: var(--font-text);
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+}
+.offers__price-accent-small {
+  display: inline-block;
+  color: var(--color-accent);
+  font-family: var(--font-text);
+  font-size: 23px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.offers__description-grey {
+  display: inline-block;
+  color: #4d4d4d;
+  font-family: var(--font-text);
+  font-size: 19px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.offers__list {
+  display: inline-block;
+  list-style-type: disc;
+  color: var(--color-text-body);
+  font-family: var(--font-text);
+  font-size: 14px;
+  text-align: left;
+}
+
+.offers__list li::marker {
+  color: var(--color-accent);
+}
+
+.btn-primary-orange {
+  background-color: var(--color-accent-additional);
+  color: var(--color-primary-white);
+  padding: 12px 21px;
+  font-family: var(--font-text);
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transiton-primary-all);
+  align-self: flex-start;
+}
+
+.btn-primary-orange:hover {
+  background-color: var(--color-primary);
+}
+
+.btn-primary-orange-center {
+  background-color: var(--color-accent-additional);
+  color: var(--color-primary-white);
+  padding: 12px 21px;
+  font-family: var(--font-text);
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transiton-primary-all);
+  align-self: center;
+}
+
+.btn-primary-orange-center:hover {
+  background-color: var(--color-primary);
+}
+
+.offers__title-light {
+  display: inline-block;
+  color: var(--color-primary-white);
+  font-family: var(--font-text);
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.offers__price-accent_additional {
+  display: inline-block;
+  color: var(--color-accent-additional);
+  font-family: var(--font-text);
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.offers__light-text {
+  display: inline-block;
+  color: var(--color-primary-white);
+  font-family: var(--font-text);
+  font-size: 14px;
+  text-align: left;
+}
+
+.offers__price-accent-small {
+  display: inline-block;
+  color: var(--color-accent);
+  font-family: var(--font-text);
+  font-size: 23px;
+  font-weight: bold;
+  text-align: left;
+}
+
+@media (min-width: 480px) {
+  .offers__group-one {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+}
+
+.offers__title-light-big {
+  display: inline-block;
+  color: var(--color-primary-white);
+  font-family: var(--font-title);
+  font-size: 60px;
+  text-align: center;
+}
+
+.offers__section-two {
+  padding: 100px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 750px;
+  word-wrap: break-word;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(../img/offers/discount-banner-bg.png);
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  .offers__content-two {
+    display: flex;
+    flex-direction: column;
+    max-width: none;
+    padding: 46px 30px;
+    text-align: center;
+  }
+
+  .offers__description-two {
+    display: inline-block;
+    color: #ffffffcc;
+    font-family: var(--font-text);
+    font-size: 19px;
+  }
+}
