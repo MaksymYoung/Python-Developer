@@ -1,0 +1,377 @@
+// https://dbdiagram.io/d/Fitness-Center-Management-Database-67ed5b374f7afba1841c9a4f
+
+// Danil Trunov
+
+Table members {
+  id bigint [pk, increment]  
+  first_name varchar(100) [not null]
+  last_name varchar(100) [not null] 
+  email varchar(255) [unique, not null]
+  phone varchar(20) [not null]
+  date_of_birth date [not null, note: "Age must be at least 18 years ago"]
+  gender ENUM('M', 'F') [not null]
+  address varchar(255)  
+  registration_date timestamp [default: `current_timestamp`]
+  training_level_id tinyint [ref: > training_levels.id]  
+}
+
+Table training_levels {
+  id tinyint [pk, increment]
+  name varchar(20) [unique, not null, note: "beginner, intermediate, advanced"]
+  description text [note: "Optional, could be used for additional info about the training level"]
+}
+
+Table member_accounts {
+  member_id bigint [pk, ref: > members.id]  
+  username varchar(50) [unique, not null]
+  password_hash varchar(60) [not null]
+  last_login timestamp 
+}
+
+Table notifications {
+  id bigint [pk, increment]
+  member_id bigint [ref: > members.id, not null]
+  message text [not null]
+  sent_at timestamp [default: `current_timestamp`]
+  is_read boolean [default: false]
+}
+
+Table member_photos {
+  id bigint [pk, increment]
+  member_id bigint [ref: > members.id, not null]
+  photo_url varchar(512) [not null]
+  uploaded_at date [default: `current_date`]
+  is_profile_photo boolean [default: false]
+}
+
+Table subscription_types {
+  id tinyint [pk, increment]
+  name varchar(10) [unique, not null, note: 'monthly, yearly, premium']
+}
+
+Table membership_statuses {
+  id tinyint [pk, increment]
+  name varchar(15) [unique, not null, note: 'wait, active, expired, cancelled']
+  description varchar(150) [note: "Optional description for the status"]
+}
+
+Table memberships {
+  id bigint [pk, increment]  
+  member_id bigint [ref: > members.id, not null]  
+  subscription_type_id tinyint [ref: > subscription_types.id, not null]  
+  start_date date [default: `current_date`]
+  end_date date
+  status_id tinyint [ref: > membership_statuses.id, not null]  
+}
+
+Table feedback_equipment {
+  member_id bigint [ref: > members.id, not null]  
+  equipment_id bigint [ref: > equipment.id, not null]   
+  rating tinyint [not null, note: "Value between 1 and 5"]  
+  notes text  
+  created_at date [default: `current_date`] 
+  indexes {
+    (member_id, equipment_id) [pk]
+  }
+}
+
+Table member_preferred_training_time {
+  indexes {
+    (member_id, day_of_week, priority) [pk]
+  }
+  member_id bigint [ref: > members.id, not null]
+  start_time time [not null, note: "Preferred start time for training"]
+  end_time time [not null, note: "Preferred end time for training"]
+  day_of_week enum('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') [not null]
+  priority tinyint [not null, note: "1 = most preferred, 2 = second most preferred"]
+}
+
+// Vladyslav Pylypenko
+
+Table class_specializations {
+  id tinyint [pk, increment]
+  name varchar(20) [unique, not null, note: 'yoga, spinning, pilates, strength training']
+  description varchar(150) [note: "Optional description for the category of training"]
+}
+
+Table class_types {
+  id tinyint [pk, increment]
+  name varchar(15) [unique, not null, note: 'group, individual']     
+}
+
+Table classes {
+  id smallint [pk, increment]
+  name varchar(40) [not null]
+  class_type_id tinyint [ref: > class_types.id, not null]
+  specialization_id tinyint [ref: > class_specializations.id, not null] 
+}
+
+Table halls {
+  id tinyint [pk, increment]
+  name varchar(40) [not null]
+  capacity tinyint [not null]
+}
+
+Table class_schedule {
+  id bigint [pk, increment]
+  class_id smallint [ref: > classes.id, not null]
+  start_time time [not null]
+  end_time time [not null]
+  hall_id tinyint [ref: > halls.id, not null]
+  class_date date [not null] 
+  indexes {
+    (class_id, hall_id, class_date, start_time) [unique]
+  }
+}
+
+Table attendance {
+  member_id bigint [ref: > members.id, not null]
+  class_schedule_id bigint [ref: > class_schedule.id, not null]
+  attended boolean [default: false] 
+  indexes {
+    (member_id, class_schedule_id) [pk]
+  }
+}
+
+Table booking_statuses {
+  id tinyint [pk, increment]
+  name varchar(15) [unique, not null, note: 'pending, confirmed, cancelled']
+  notes varchar(150) [note: "Optional description for the status"]
+}
+
+Table bookings {
+  member_id bigint [ref: > members.id, not null]
+  class_schedule_id bigint [ref: > class_schedule.id, not null]
+  booking_date timestamp [default: `current_timestamp`]
+  status_id tinyint [ref: > booking_statuses.id, not null]
+  cancellation_reason text [note: "Причина скасування, якщо статус 'cancelled'"]
+  indexes {
+    (member_id, class_schedule_id) [pk]
+  }
+}
+
+// Oleksii Zakharchuk
+
+Table equipment_conditions {
+  id tinyint [pk, increment]
+  name varchar(30) [unique, not null, note: 'new, good, needs replacement']
+}
+
+Table equipment_statuses {
+  id tinyint [pk, increment]
+  name varchar(30) [unique, not null, note: 'available, in use, maintenance']
+}
+
+Table equipment {
+  id bigint [pk, increment]
+  name varchar(30) [not null]
+  condition_id tinyint [ref: > equipment_conditions.id]
+  status_id tinyint [ref: > equipment_statuses.id]
+  hall_id tinyint [ref: > halls.id, not null]
+}
+
+Table maintenance_history {
+  id bigint [pk, increment]
+  equipment_id bigint [ref: > equipment.id, not null]
+  maintenance_date date [not null]
+  performed_by varchar(100) [not null]
+  notes text
+}
+
+// Maksym Zymyn
+
+Table metrics {
+  id int [pk, increment]
+  name varchar(30) [unique, not null, note: 'Weight, Body Fat %, Muscle Mass, Waist Circumference, Calories, Heart Rate, Distance']
+  unit varchar(15) [not null, note: 'kg, %, bpm, m, km, kcal']
+  description varchar(150) [note: "Optional description for the metric"]
+  created_at date [default: `current_date`]
+}
+
+Table health_issues {
+  id int [pk, increment]
+  name varchar(100) [unique, not null]
+  description text 
+}
+
+Table member_health_issues {
+  indexes {
+    (member_id, health_issue_id) [pk]
+  }
+  member_id bigint [ref: > members.id, not null]
+  health_issue_id int [ref: > health_issues.id, not null]  
+  created_at date [default: `current_date`]
+}
+
+Table exercises {
+  id int [pk, increment]
+  name varchar(40) [unique, not null]
+  expected_sets smallint [not null]
+  expected_reps smallint [not null]
+  created_at date [default: `current_date`]
+}
+
+Table exercise_progress {
+  member_id bigint [ref: > members.id, not null]
+  class_schedule_id bigint [ref: > class_schedule.id, not null]
+  exercise_id int [ref: > exercises.id, not null]
+  sets smallint [not null]
+  reps smallint [not null]  
+  metric_id int [ref: > metrics.id]
+  exercise_metric_value decimal(8,2) 
+  duration interval [not null]
+  notes text
+  indexes {
+    (class_schedule_id, exercise_id, member_id) [pk]
+  }
+}
+
+Table goal_types {
+  id tinyint [pk, increment]
+  name varchar(40) [unique, not null, note: 'Weight loss, Muscle gain, Endurance']
+  description varchar(150) [note: "Optional description for the goal type"]
+  created_at date [default: `current_date`]
+}
+
+Table training_plans {
+  id bigint [pk, increment]
+  member_id bigint [ref: > members.id, not null]
+  name varchar(40) [not null]
+  description text 
+  start_date date [default: `current_date`]
+  end_date date 
+  achievement_percentage tinyint [not null, note: "Value between 0 and 100"]
+  goal_type_id tinyint [ref: > goal_types.id, not null] 
+  created_at date [default: `current_date`]
+}
+
+Table training_plan_classes {
+  indexes {
+    (plan_id, class_id) [pk]
+  }
+  plan_id bigint [ref: > training_plans.id, not null]
+  class_id smallint [ref: > classes.id, not null]
+}
+
+Table training_recommendations {
+  id bigint [pk, increment]
+  plan_id bigint [ref: > training_plans.id, not null]
+  trainer_id smallint [ref: > trainers.id, not null]
+  recommendation_text text [not null]
+  recommendation_date date [default: `current_date`]
+}
+
+Table feedback_class_schedule {
+  member_id bigint [ref: > members.id, not null]  
+  class_schedule_id bigint [ref: > class_schedule.id, not null]  
+  rating tinyint [not null, note: "Value between 1 and 5"]  
+  notes text  
+  created_at date [default: `current_date`] 
+  indexes {
+    (member_id, class_schedule_id) [pk]
+  }
+}
+
+// Oleksandr Kopytin
+
+Table trainer_class_assignments_history {
+  indexes {
+    (class_id, trainer_id, start_date) [pk]
+  }
+  class_id smallint [ref: > classes.id, not null]
+  trainer_id smallint [ref: > trainers.id, not null]
+  start_date date [default: `current_date`]
+  end_date date
+}
+
+Table trainers {
+  id smallint [pk, increment]
+  first_name varchar(100) [not null]
+  last_name varchar(100) [not null] 
+  email varchar(255) [unique, not null]
+  phone varchar(20) [not null]
+  date_of_birth date [not null, note: "Age must be at least 21 years ago"]
+  gender ENUM('M', 'F') [not null]
+  education varchar(255) [not null]
+  address varchar(255) [not null]
+  registration_date date [default: `current_date`]
+}
+
+Table trainer_accounts {
+  trainer_id smallint [pk, ref: > trainers.id] 
+  username varchar(50) [unique, not null]
+  password_hash varchar(255) [not null]
+  last_login timestamp
+}
+
+Table trainer_photos {
+  id bigint [pk, increment]
+  trainer_id smallint [ref: > trainers.id, not null]
+  photo_url varchar(512) [not null]
+  uploaded_at date [default: `current_date`]
+  is_profile_photo boolean [default: false]
+}
+
+Table trainer_availability {
+  id int [pk, increment]
+  trainer_id smallint [ref: > trainers.id, not null]  
+  day_of_week enum('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') [not null]
+  start_time time [not null] 
+  end_time time [not null] 
+  indexes {
+    (trainer_id, day_of_week, start_time, end_time) [unique]
+  }
+}
+
+Table feedback_trainer {
+  id bigint [pk, increment]
+  member_id bigint [ref: > members.id, not null]  
+  trainer_id smallint [ref: > trainers.id, not null]  
+  rating tinyint [not null, note: "Value between 1 and 5"]  
+  notes text  
+  created_at date [default: `current_date`]
+}
+
+// Ihor Bohdanovych
+
+Table payment_methods {
+  id tinyint [pk, increment]
+  name varchar(20) [unique, not null, note: 'credit card, cash, bank transfer, online']
+  notes varchar(150) [note: "Optional description for the payment method"]
+}
+
+Table payment_statuses {
+  id tinyint [pk, increment]
+  name varchar(15) [unique, not null, note: 'pending, completed, failed']
+}
+
+Table payments {
+  id bigint [pk, increment]
+  member_id bigint [ref: > members.id, not null]  
+  amount decimal(7,2) [not null]
+  payment_date timestamp [not null]
+  method_id tinyint [ref: > payment_methods.id, not null]
+  status_id tinyint [ref: > payment_statuses.id, not null]
+  transaction_id varchar(100) [unique, not null]
+  comment text 
+}
+
+Table promo_codes {
+  promo_code varchar(36) [pk, note: "UUID-based promo code"]
+  description text
+  discount_percentage tinyint [not null, note: "Value between 0 and 100"]
+  start_date date [default: `current_date`]
+  end_date date
+  class_id smallint [ref: > classes.id, not null]
+  created_at date [default: `current_date`]
+}
+
+Table member_referrals {
+  referrer_id bigint [ref: > members.id, not null]
+  referred_id bigint [ref: > members.id, unique, not null]
+  referral_date date [default: `current_date`]
+  promo_code varchar(36) [ref: > promo_codes.promo_code, not null]
+  indexes {
+    (referrer_id, referred_id) [pk]
+  }
+}
