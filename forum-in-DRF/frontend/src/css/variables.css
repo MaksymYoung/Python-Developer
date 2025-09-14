@@ -1,0 +1,90 @@
+/* Style variables */
+:root {
+    /* text font */
+    --text-font: 'Geologica';
+
+    /* animation speed */
+    --animation-fast: 0.15s;
+    --animation-normal: 0.3s;
+    --animation-slow: 0.6s;
+
+    /* text colors  */
+    --primary-text-color: #000;
+    --secondary-text-color: #959595;
+    --alternative-text-color: #fff;
+    --danger-text-color: #F15831;
+    --gray-text-color: #25292C;
+
+    /* button colors */
+    --primary-btn-bcg-color-active: #000;
+    --primary-btn-bcg-color-hover: #292929;
+    --primary-btn-bcg-color-inactive: #E5E5E5;
+    --primary-btn-text-color-active: #fff;
+    --primary-btn-text-color-inactive: #A1A1A1;
+
+    --secondary-btn-bcg-color-active: #fff;
+    --secondary-btn-bcg-color-hover: #F1E7D280;
+    --secondary-btn-bcg-color-inactive: #EEEFF1;
+    --secondary-btn-text-color-active: #000;
+    --secondary-btn-text-color-inactive: #A1A1A1;
+
+    --danger-btn-bcg-color-active: #E14E29;
+    --danger-btn-bcg-color-hover: #F15831;
+    --danger-btn-bcg-color-inactive: #E5E5E5;
+    --danger-btn-text-color-active: #fff;
+    --danger-btn-text-color-inactive: #A1A1A1;
+
+    --link-btn-text-color-active: #000;
+    --link-btn-text-color-inactive: #A1A1A1;
+
+    /* background colors */
+    --primary-bcg-color: #F9F5EC;
+    --secondary-bcg-color: #fff;
+    --green-bcg-color: #B4D27A;
+
+    /* input colors */
+    --input-border-color-active: #AAAAAA;
+    --input-border-color-red: #F15831;
+
+    /* checkbox colors */
+    --checkbox-border-color-unmatched: #ADB3B9;
+    --checkbox-border-color-red: #F15831;
+    --checkbox-border-color-matched: #000;
+
+    /* hr colors */
+    --light-gray-hr-color: #EDEDED;
+    --panel-hr-color: #F0F0F0;
+
+    /* header */
+    --yellow-bcg-color: #F9F5EC;
+    --white-bcg-color: #FFF;
+    --header-bcg-color: #fff;
+    --footer-bcg-color: #232424;
+
+    /* loading */
+    --loading-dot-active-color: rgba(180, 210, 122, 0.75);
+    --loading-dot-inactive-color: rgba(180, 210, 122, 0.3);
+
+    /* home page */
+    --benefits-panel-color: #F9F5EC;
+    --for-whom-panel-color: #FFF;
+
+    /* Dropdown */
+    --dropdown-bcg-color: #f9f9f9;
+    --dropdown-item-hover: #f1f1f1;
+
+    /* Participant card */
+
+    --participant-card-color: #F9F5EC;
+    --participant-card-color-hover: #EDE0C5;
+    --other-services-color: #707070;
+
+    --profile-picture-bg-color: #FFF;
+    --profile-picture-border-color: #AAAAAA;
+
+    --participant-updated-color: #B4D27A;
+
+    /* Who we are page */
+    --who-we-are-bcg-color: #F9F5EC;
+
+}
